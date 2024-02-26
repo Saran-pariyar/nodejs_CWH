@@ -16,6 +16,24 @@ app.post('/', (req,res)=>{
 })
 
 
+//we need to use sendFile to render a proper html page
+app.get("/index", (req, res) => {
+    // console.log(__dirname)
+    // console.log("H");
+    // we gave directory name in __dirname
+    res.sendFile('templates/index.html', { root: __dirname })
+})
+
+
+// to return a json
+app.get("/api", (req, res) => {
+    res.json({ a: 1, b: 2, c: 3, d: 4, name: ["harry", "jerry"] })
+})
+
+
+
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
