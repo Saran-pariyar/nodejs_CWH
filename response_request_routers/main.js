@@ -1,9 +1,19 @@
 const express = require('express')
+//exporting routes
+const blog = require('./routes/blog')
+const shop = require('./routes/shop')
+
 const app = express()
 const port = 3000
 
 app.use(express.static('public'))
 
+//now all the url that will have /blog will be handled by this route
+// if i go to localhost:3000/blog/about, the get request inside blog will be called
+// we can also go to /blog/intro-to-express
+app.use('/blog', blog)
+//now all the url that will have /shop will be handled by this route
+app.use('/shop', shop)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
